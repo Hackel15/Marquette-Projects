@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+<p></p>
+<pre><span style="font-family: &#39;courier new&#39;, courier, sans-serif;">/* Demonstration of getInt and formatted output. */
+/* Marquette University 2015 */
+
+#include &lt;arm.h&gt;
+
+/* Main program starts here.  Put nothing before _main_:.  */
+.section .text
+.globl _main_
+_main_:
+        /* Function prolog.                                  */
+        /* Sets up environment for user program to execute.  */
+                                /* Push O/S state on Stack.  */
+        push    {r4, r5, r6, r7, r8, r9, sl, fp, ip, lr}
+        sub     sp, sp, #32     /* Make stack frame.  */
+        /* Function prolog ends. */
+        /* Start your program.   */
+
+        ldr     r0, =WELCOME    /* Print welcome banner */
+        bl      kprintf
+
+mainloop:
+        bl      getInt          /* Get an integer */
+        cmp     r1, #1          /* Check r1 for EOF flag */
+        beq     done
+        mov     r1, r0          /* kprintf format string goes in r0, */
+        ldr     r0, =FORMAT     /* arguments go in r1, etc. */
+        bl      kprintf
+        b       mainloop
+
+        /* End of your program.         */
+        /* Function epilogue.           */
+        /* Restores the environment from the O/S. */
+done:</span>
+ <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">       add     sp, sp, #32     /* Destroy stack frame.     */
+                                /* Pop O/S state from stack.*/
+        pop     {r4, r5, r6, r7, r8, r9, sl, fp, ip, lr}
+        bx      lr              /* Return to O/S.           */</span></pre>
+<pre><span style="font-family: &#39;courier new&#39;, courier, sans-serif;">/* getInt function returns positive and negative integers */
+/*  read in as ASCII characters representing base-10 values.  */
+/*  Returns:    */
+/*      r0 = integer */
+/*      r1 = End Of File (EOF) flag, 1 (true) or 0 (false). */
+#define TOTAL   r4
+#define DIGIT   r5
+#define SIGN    r6
+#define SAW_EOF r7
+
+getInt:
+        push    {r4, r5, r6, r7, r8, r9, sl, fp, ip, lr}
+
+        mov     r0, #&#39;?&#39;        /* Print a friendly &quot;? &quot; prompt. */
+        bl      putchar
+        mov     r0, #&#39; &#39;
+        bl      putchar
+        mov     TOTAL, #0       /* Initialize variables         */
+        mov     SIGN, #0
+        mov     SAW_EOF, #0
+
+        bl      getchar         /* Get first character          */
+        cmp     r0, #&#39;-&#39;        /* IF it is a minus sign,       */
+        bne     gi2             /*  THEN set SIGN = 1,          */
+        mov     SIGN, #1        /*  ELSE jump into main loop.   */
+        bl      putchar         /* Echo minus sign.             */
+
+giloop:
+        bl      getchar         /* Get first possible digit.    */
+gi2:    cmp     r0, #4          /* If EOF, exit on special case */
+        beq     gieof
+        cmp     r0, #&#39;\n&#39;       /* If newline, then done        */
+        beq     gidone          /*  reading digits.             */
+        cmp     r0, #&#39;0&#39;        /* Check for digits between &#39;0&#39; */
+        blt     giloop          /*  and &#39;9&#39;.                    */
+        cmp     r0, #&#39;9&#39;
+        bgt     giloop          /* Otherwise, ignore character  */</span></pre>
+<pre><span style="font-family: &#39;courier new&#39;, courier, sans-serif;">        mov     DIGIT, r0
+        bl      putchar         /* Echo digit                   */
+
+        sub     r0, DIGIT, #&#39;0&#39; /* Horner&#39;s Method to calculate */
+        mov     r1, #10         /*  value of number             */
+        mul     TOTAL, TOTAL, r1
+        add     TOTAL, TOTAL, r0
+        b       giloop
+
+gieof:  mov     SAW_EOF, #1     /* Special case EOF flag = true */
+gidone: 
+        cmp     SIGN, #1        /* IF sign = 1, subtract total  */
+        bne     gid2            /*  from zero to get negative   */
+        mov     r1, #0
+        sub     TOTAL, r1, TOTAL
+gid2:
+        mov     r0, #&#39;\r&#39;       /* Echo newline and carriage return */
+        bl      putchar
+        mov     r0, #&#39;\n&#39;
+        bl      putchar
+        mov     r0, TOTAL       /* Stage return values          */
+        mov     r1, SAW_EOF
+
+        pop     {r4, r5, r6, r7, r8, r9, sl, fp, ip, lr}
+        bx      lr              /* Return to caller             */
+
+        
+
+/* .data section is for non-code entities, like format strings. */
+.section .data
+WELCOME:        .asciz &quot;Enter numbers to test getInt; Ctrl-D to stop.\r\n&quot;
+FORMAT:         .asciz &quot;getInt returned %10d\r\n&quot;
+                /* This FORMAT string tells kprintf to print a  */
+                /*  base-10 signed integers (%d) in a field ten */
+                /*  characters wide.                            */</span></pre>
+<p></p>
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.6.8462-99 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+        
+        
+    
+    
+    
+    
+    
+
+
+
+<div style="text-align: center;background-color: #990033;color: white;">
+<h1>COSC 2200</h1>
+<h2>Homework Assignment #5</h2>
+Basic ARM Assembly Language</div>
+<div>Due: Thursday, October 26th, 23:59 CDT<br/> Submit: Turn in your source files using the <tt>turnin</tt> command on Morbius. Please name your files &quot;main-kelvin.S&quot;, &quot;main-fact.S&quot;, and &quot;main-counts.S&quot;. Failure to follow this simple convention will cause TA-Bot to fail.<br/> Work may be completed in teams of two. The names of both partners must appear in a comment block at the top of your file for credit to be given. I <b>strongly</b> recommend that you take the time to meet with your partner in person and work together on these projects, rather than work separately and try to integrate at the last minute. Use the command hook &quot;<tt>TA-BOT:MAILTO</tt>&quot; in a comment in your source file to designate mail addresses for TA-Bot output.<br/>
+<p>Here is a&#160;<a rel="noopener" href="https://youtu.be/H_sxw2HOUqo" target="_self">video demo of getting started with the ARM Playground</a>.</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Preparation</h3>
+</div>
+<div>
+<p>You will have to familiarize yourself with several common UNIX tools for this assignment. The first of these is <b>tar</b>, a utility originally devised to create <b>t</b>ape <b>ar</b>chives for the purpose of backing files up onto computer tapes.</p>
+<p>While <tt>tar</tt> is still used to create tape backups of filesystems, it has become far more common to use <tt>tar</tt> to group files and/or directories together into a single entity, typically called a &quot;tar-ball&quot;. (So common is the use of <tt>tar</tt> that it has been verbed in computer science terminology: We speak of &quot;tarring&quot; files, or files that have been &quot;tarred up&quot;.) <tt>Tar</tt> syntax is somewhat arcane, as <tt>tar</tt> came into existence before modern standards for command-line options.</p>
+<ul>
+<li>Login to Morbius, and change to a fresh working directory.</li>
+<li>Execute the the following command:<br/> <tt>tar xvzf ~brylow/cosc2200/armPlayground.tgz</tt></li>
+</ul>
+<p>This untars the files into your working directory, in a subdirectory called <tt>armPlayground/</tt>. For more information on <tt>tar</tt>, please see the UNIX man pages.</p>
+<p>Edit the file <tt>main.S</tt> to write your assembler programs. Your work must be compiled on a machine with the proper tools, such as the <a rel="noopener" href="http://www.mscs.mu.edu/~brylow/machine.txt">Systems Lab machines</a>. In order to compile your program, use the command &quot;<tt>make</tt>&quot;. In order to run your program, use the command &quot;<tt>arm-console</tt>&quot;. At any time, you can shutdown the remote console system by hitting Ctrl-Space, followed by the letter &#39;q&#39;, for &#39;quit&#39;.</p>
+<p>Few rules govern the format of assembly language programs. Make an effort to keep your programs readable and well-documented; sometimes partial credit may be given if we can tell what you were <i>trying</i> to do, even if it doesn&#39;t quite make it.</p>
+<p>The ARM Playground kernel includes several useful functions for input and output in these earliest assignments. The first is <tt>getnum</tt>. When executing the <tt>getnum</tt> function, (with the assembly code &quot;<tt> bl getnum</tt>&quot;,) the user is prompted with a question mark, and a simple integer will be read into register <tt>r0</tt>. The <tt>printnum</tt> function will output a base-10 representation of the contents of register <tt>r0</tt>. The <tt>divide</tt> function takes a dividend in <tt>r0</tt> and a divisor in <tt>r1</tt>; upon return, the integer quotient is stored in <tt>r0</tt> and any remainder in <tt>r1</tt>.</p>
+<p>In keeping with the standard ARM calling convention, registers <tt>r0</tt> through <tt>r3</tt> may have their values changed by any function call.</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q1 - Kelvin</h3>
+</div>
+<div>
+<p>Write an assembler program that reads an integer, and converts that integer from Fahrenheit to Kelvin. You need only use integers for the conversion, not floating point numbers.</p>
+<p>Example:<br/><tt>? 50</tt><br/><tt>283</tt></p>
+<p>You may assume that overflow and underflow do NOT occur.</p>
+<div></div>
+<p></p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q2 - Factorial</h3>
+</div>
+<div>
+<p>Write an assembler program that reads one integer and prints the factorial of that integer.</p>
+<p>Example:<br/> <tt>? 10</tt><br/><tt>3628800</tt><br/></p>
+<p>You may assume that overflow and underflow do NOT occur, but factorials grow quickly and your program will not return correct answers past the billions range. &#160;(Why?)</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q3 - Counts</h3>
+</div>
+<div>
+<p>Write an assembler program that reads in integers from the user until a zero is entered. Print the sum of the integers, the product of multiplying all of the integers, the number of even integers seen, and the number of odd integers seen. &#160;Do not include the 0 in your calculations.</p>
+<div>
+<p>Example:<br/><tt>? 3</tt><br/><tt>? 4</tt><br/><tt>? 5</tt><br/><tt>? 0</tt><br/><tt>12</tt><br/><span style="font-family: monospace;">60</span><br/><span style="font-family: monospace;">1</span><br/><span style="font-family: monospace;">2</span></p>
+<p>You may assume that overflow and underflow do NOT occur.</p>
+
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q4</h3>
+</div>
+<div>
+<p>The last problem of this homework will be released by Monday, October 23rd, at Piazza and will be based on material covered until then.</p>
+<div>
+
+</div>
+<div style="text-align: center;background-color: #990033;color: white;"></div>
+</div>
+<div style="clear: both;"></div>
+</div></div>
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.6.8462-99 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>

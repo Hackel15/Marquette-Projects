@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+<div style="text-align: center;background-color: #990033;color: white;">
+<h1>COSC 2200</h1>
+<h2>Homework Assignment #8</h2>
+</div>
+<div>
+<p>Due: Tuesday, November 21st, 23:59 CST.</p>
+<p>Submit: Turn in your source files using the <tt>turnin</tt> command on the Systems Lab machines. Please name your files &quot;main-hanoi.S&quot;, &quot;main-heap.S&quot;, &quot;main-dump.S&quot;, and &quot;main-nuke.S&quot;. Submit your analysis for questions 2 and 3 electronically in the D2L dropbox. <br/> Work may be completed in teams of two. The names of both partners must appear in a comment block at the top of your file for credit to be given. I <b>strongly</b> recommend that you take the time to meet with your partner in person and work together on these projects, rather than work separately and try to integrate at the last minute. Use the command hook &quot;<tt>TA-BOT:MAILTO</tt>&quot; in a comment in your source file to designate mail addresses for TA-Bot output.</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q1 - The <em>Towers of Hanoi</em> Problem</h3>
+</div>
+<div>
+  <p>Write an ARM Assembly program that asks the user to input the number of pegs and then prints the steps needed in order to solve the Tower of Hanoi problem instance. You should implement a recursive solution. If you are not familiar with the Towers of Hanoi problem and the recursive algorithm to solve it, there are many resources on the web about it including <a rel="noopener" href="https://www.youtube.com/watch?v=5_6nsViVM00">this YouTube video</a>.</p>
+<p>We have provided an example program for your reference, runnable on Morbius as ~debbie/public/cosc2200/hanoi</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q2 - Heap Limits</h3>
+</div>
+<div>
+<p>Write an ARM Assembly language program that requests dynamic allocation of memory from the operating system (<span style="font-family: &#39;courier new&#39;, courier, sans-serif;">malloc</span> function) until the operating system will not allocate any more. &#160;Submit your written answers to the D2L Dropbox.</p>
+<p><strong>Analysis Questions:</strong></p>
+<ul>
+<li>How much memory will the ARM Playground give you?</li>
+
+<li>Experiment with different request sizes. What do you see?</li>
+<li>What is the lowest address returned by <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">malloc</span>? What is the highest?</li>
+</ul>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q3 - Text Dump</h3>
+</div>
+<div>
+<p>Write an ARM Assembly program that prints out the memory address and the contents of every location between &quot;main:&quot; and the last line of your main program. Recall that the &quot;%X&quot; format specifier to <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">kprintf()</span> prints hexadecimal values.</p>
+<p><strong>Analysis Questions:</strong></p>
+<ul>
+<li>Where is your program in memory?</li>
+<li>Does your program change locations if you run it again?</li>
+<li>What is the meaning of what you are displaying?</li>
+
+</ul>
+<p>Submit your written answers to the D2L dropbox.</p>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q4 - Nuke Stack</h3>
+</div>
+<div>
+<p>Having worked so hard to understand the discipline of activation records, now let&#39;s break them. Write ARM Assembly function &quot;<span style="font-family: &#39;courier new&#39;, courier, sans-serif;">nukeStack</span>&quot; that when called -- from anywhere in a program that obeys standard calling conventions-- destroys all of the activation records above it on the stack until it finds the stack frame for the <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">main</span> program, and then returns directly to the <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">main</span> program. Suffice it to say, <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">nukeStack</span> does not follow the standard calling convention. Test your <span style="font-family: &#39;courier new&#39;, courier, sans-serif;">nukeStack</span> by calling it from within various programs from previous assignments.</p>
+</div>
+</div>
+<div style="clear: both;"></div>
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.6.8462-99 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head></head><body>
+
+
+
+
+
+<div style="text-align: center;background-color: #990033;color: white;">
+<h1>COSC 2200</h1>
+<h2>Homework Assignment #7</h2>
+<h1>Recursion and Caches</h1>
+</div>
+<div>
+<p>Due: Thursday, November 9th, 23:59 CST.</p>
+
+<p> Work may be completed in your assigned new teams (see Piazza). The names of both partners must appear in a comment block at the top of your file for credit to be given. I <b>strongly</b> recommend that you take the time to meet with your partner in person and work together on these projects, rather than work separately and try to integrate at the last minute. Use the command hook &quot;<tt>TA-BOT:MAILTO</tt>&quot; in a comment in your source file to designate mail addresses for TA-Bot output.</p>
+<p>Here is a&#160;<a rel="noopener" href="https://youtu.be/H_sxw2HOUqo" target="_self">video demo of getting started with the ARM Playground</a>.</p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q1 - Grid Printer</h3>
+</div>
+<div>
+<p>Write an ARM Assembly program that reads an integer number of columns, &quot;n&quot;, and then prompts for n more integers representing a column coordinate for each row. Print out an n x n grid representation of the data entered, using zero-based coordinates.</p>
+<p>We have provided an example program for your reference, runnable on Morbius as ~debbie/public/cosc2200/grid.</p>
+<p>Your program will need to store an arbitrary number of integers before printing out the results. You may either allocate space for a local array on the stack (below the stack pointer of the current function&#39;s activation record,) or you may dynamically allocate the space using the malloc() library function.</p>
+<p>This type of problem is best implemented using helper functions. (For example, a function printrow(cols, value) that prints out a single row of the grid.) As you write your helper functions, build proper activation records that will allow your functions to strictly abide by the standard calling convention -- this will help a great deal.</p>
+
+<p><b>Submit</b>: Turn in your source file using the <tt>turnin</tt> command command on the Systems Lab machines. Please name your file &quot;main-grid.S&quot;. Failure to follow this simple convention may significantly delay grading of your assignment. Failure to follow this simple convention will cause TA-Bot to fail. </p>
+</div>
+<div style="text-align: center;background-color: #990033;color: white;">
+<h3>Q2 - Direct Mapped Memory Cache</h3>
+</div>
+<div>Consider a direct-mapped memory cache for computer that uses 32-bit addresses. To keep the example small, we will assume a cache with only 8 slots, and assume each slot holds only four bytes.</div>
+<div></div>
+<div>1. Draw a diagram that shows a 32-bit address divided into <i>tag</i>, <i>block</i>, and <i>offset</i> fields, and specify the number of bits in each field.</div>
+<div>2. Suppose the processor sends the cache a sequence of <i>fetch</i> requests for the set of addresses shown below. At the end of the sequence, what memory addresses are kept in the cache? (Show the three fields of each address that is in the cache.) <br/> &#160;</div>
+<div></div>
+<div><img src="refs.png" title="Memory Addresses" width="100px"/></div>
+<div></div>
+<p><b>Submit:</b> Turn in your answer at the D2L Dropbox. Make sure both names of team partners are included (unless one team member did not work on the problem).</p>
+
+
+<script type="text/javascript" src="/d2l/common/math/MathML.js?v=10.7.6.8462-99 "></script><script type="text/javascript">document.addEventListener('DOMContentLoaded', function() { D2LMathML.DesktopInit('https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=MML_HTMLorMML','https://s.brightspace.com/lib/mathjax/2.6.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML'); });</script></body></html>
