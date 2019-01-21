@@ -1,0 +1,5 @@
+Definitions:
+Concatinations - String variables being added together--concatination
+New Line - /n 
+Comments - # (prefix for a comment)
+

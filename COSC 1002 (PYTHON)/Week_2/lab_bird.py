@@ -1,0 +1,17 @@
+def asterisk_bird(l, n, s, m):
+    print(l*" "+n*"*"+s*" "+m*"*")
+
+asterisk_bird(29, 0, 0, 1)
+asterisk_bird(28, 0, 0, 2)
+asterisk_bird(28, 0, 0, 2)
+asterisk_bird(27, 0, 0, 3)
+asterisk_bird(26, 0, 0, 3)
+asterisk_bird(0, 1, 24, 4)
+asterisk_bird(1, 27, 0, 0)
+asterisk_bird(1, 27, 0, 0)
+asterisk_bird(0, 1, 24, 4)
+asterisk_bird(26, 0, 0, 3)
+asterisk_bird(27, 0, 0, 3)
+asterisk_bird(28, 0, 0, 2)
+asterisk_bird(28, 0, 0, 2)
+asterisk_bird(29, 0, 0, 1)
